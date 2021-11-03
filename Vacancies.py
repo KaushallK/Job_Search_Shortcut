@@ -1,11 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.common import action_chains
-from selenium.webdriver.common import actions
-from selenium.webdriver.common import keys
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.actions import key_actions
-
 import time
 
 browser = webdriver.Chrome(executable_path=r"C:\Program Files (x86)\Chromedriver\chromedriver2.exe")
