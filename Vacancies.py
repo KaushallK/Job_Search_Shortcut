@@ -14,17 +14,28 @@ vacancies = [
     r"https://www.pnet.co.za/5/job-search-detailed.html?what=advanced%20excel%20python&searchOrigin=Resultlist_top-search",
     r"https://za.indeed.com/jobs?q=work%20from%20home%20online&l=Western%20Cape",
     r"https://www.amazon.jobs/en/landing_pages/aws-south-africa",
-    r"https://westerncapegov.erecruit.co/candidateapp/login/",
-    r"https://www.beaufortwestmun.co.za/current-opportunities"
+    r"https://westerncapegov.erecruit.co/candidateapp/login/"
 ]
 
-def Vacancies():
+def get_vacancies():
     for i in range(len(vacancies)):
-        browser.execute_script("window.open('');")
-        kids = browser.window_handles
-        browser.switch_to_window(kids[-1])
-        browser.get(vacancies[i])
-
-Vacancies()
-
-
+                x = 0
+                if vacancies[i][12:16] == "pnet" and x == 0:
+                    try:
+                        browser.get(vacancies[i])
+                        time.sleep(2)
+                        cookies = browser.find_element_by_xpath('//*[@id="ccmgt_explicit_preferences"]')
+                        cookies.click()
+                        cookies2 = browser.find_element_by_xpath('//*[@id="ccmgt_preferences_reject"]')
+                        cookies2.click()
+                        browser.switch_to.new_window('window')
+                        x += 1
+                    except:
+                        browser.get(vacancies[i])
+                        browser.minimize_window()
+                        browser.switch_to.new_window('window')
+                else:
+                    browser.get(vacancies[i])
+                    browser.minimize_window()
+                    browser.switch_to.new_window('window')
+get_vacancies()
