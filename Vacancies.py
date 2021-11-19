@@ -20,7 +20,7 @@ vacancies = [
 def get_vacancies():
     for i in range(len(vacancies)):
                 x = 0
-                if vacancies[i][12:16] == "pnet" and x == 0:
+                if vacancies[i][12:16] == "pnet" and x == 0: #Conditional argument to handle cookies frame on the Pnet website, which only occurs during the first instance. Except statement handles every subseqent instance of "Pnet".
                     try:
                         browser.get(vacancies[i])
                         time.sleep(2)
